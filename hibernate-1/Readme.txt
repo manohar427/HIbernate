@@ -1,0 +1,1 @@
+Example of @Entity,@Table,@Column and @Transient

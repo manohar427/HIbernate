@@ -1,5 +1,8 @@
 package com.test;
 
+
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,8 +11,7 @@ public class Student {
     @Id
     private int id;
     private String name;
-    //@OneToMany --  Third Table will be created
-    @ManyToMany(mappedBy = "student") //Laptop table will have Student ID reference
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private List<Laptop> laptop;
 
     public int getId() {
@@ -36,5 +38,12 @@ public class Student {
         this.laptop = laptop;
     }
 
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", laptop=" + laptop +
+                '}';
+    }
 }
